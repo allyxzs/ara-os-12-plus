@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ara-bg: #000000;
+  --ara-surface-hex: #07080f;
+  --ara-panel-bg: rgba(7, 8, 15, 0.84);
+  --ara-bar-bg: rgba(7, 8, 15, 0.92);
+  --ara-elevated-bg: rgba(16, 18, 28, 0.88);
+  --ara-input-bg: rgba(5, 6, 11, 0.90);
+  --ara-modal-bg: rgba(7, 8, 15, 0.96);
+  --ara-text: #f4f4f8;
+  --ara-text-muted: #94a3b8;
+  --ara-border: rgba(255, 42, 133, 0.35);
+  --ara-border-subtle: rgba(255, 255, 255, 0.09);
+  --ara-accent-1: #ff2a85;
+  --ara-accent-1-soft: rgba(255, 42, 133, 0.18);
+  --ara-accent-1-border: rgba(255, 42, 133, 0.55);
+  --ara-accent-1-contrast: #ffffff;
+  --ara-accent-2: #00f0ff;
+  --ara-accent-2-soft: rgba(0, 240, 255, 0.16);
+  --ara-accent-2-border: rgba(0, 240, 255, 0.52);
+  --ara-accent-3: #9b5de5;
+  --ara-accent-3-soft: rgba(155, 93, 229, 0.18);
+  --ara-accent-3-border: rgba(155, 93, 229, 0.52);
+  --ara-blur: 12px;
+  --ara-radius: 6px;
+  --ara-shadow: 0 12px 30px rgba(0, 0, 0, 0.72);
+  --ara-font-scale: 1;
+  --ara-font-ui: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --ara-backdrop-opacity: 0.75;
+  --ara-grid-line: rgba(0, 240, 255, 0.14);
+  --ara-hover-bg: rgba(255, 255, 255, 0.08);
+  --ara-code-bg: #030408;
+  --ara-code-text: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--ara-bg);
+  color: var(--ara-text);
+  overflow: hidden;
+  transition: background-color 0.28s ease, color 0.28s ease;
+}
+
+.ara-font {
+  font-family: var(--ara-font-ui);
+}
+
+.ara-panel {
+  background-color: var(--ara-panel-bg);
+  backdrop-filter: blur(var(--ara-blur));
+  -webkit-backdrop-filter: blur(var(--ara-blur));
+  border: 1px solid var(--ara-border);
+  border-radius: var(--ara-radius);
+  box-shadow: var(--ara-shadow);
+  color: var(--ara-text);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, border-radius 0.2s ease;
+}
+
+.ara-bar {
+  background-color: var(--ara-bar-bg);
+  backdrop-filter: blur(var(--ara-blur));
+  -webkit-backdrop-filter: blur(var(--ara-blur));
+  border-bottom: 1px solid var(--ara-border);
+  color: var(--ara-text);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.ara-modal {
+  background-color: var(--ara-modal-bg);
+  backdrop-filter: blur(calc(var(--ara-blur) + 6px));
+  -webkit-backdrop-filter: blur(calc(var(--ara-blur) + 6px));
+  border: 1px solid var(--ara-border);
+  border-radius: calc(var(--ara-radius) + 4px);
+  box-shadow: var(--ara-shadow);
+  color: var(--ara-text);
+}
+
+.ara-card {
+  background-color: var(--ara-elevated-bg);
+  border: 1px solid var(--ara-border-subtle);
+  border-radius: var(--ara-radius);
+  color: var(--ara-text);
+}
+
+.ara-input {
+  background-color: var(--ara-input-bg);
+  border: 1px solid var(--ara-border-subtle);
+  border-radius: var(--ara-radius);
+  color: var(--ara-text);
+  transition: border-color 0.2s ease;
+}
+
+.ara-input:focus {
+  outline: none;
+  border-color: var(--ara-accent-2);
+}
+
+.ara-input::placeholder {
+  color: var(--ara-text-muted);
+  opacity: 0.75;
+}
+
+.ara-btn {
+  background-color: var(--ara-elevated-bg);
+  border: 1px solid var(--ara-border-subtle);
+  border-radius: var(--ara-radius);
+  color: var(--ara-text);
+  transition: all 0.18s ease;
+}
+
+.ara-btn:hover {
+  background-color: var(--ara-hover-bg);
+  border-color: var(--ara-accent-1-border);
+}
+
+.ara-btn-primary {
+  background-color: var(--ara-accent-1);
+  border: 1px solid var(--ara-accent-1);
+  border-radius: var(--ara-radius);
+  color: var(--ara-accent-1-contrast);
+  transition: filter 0.18s ease, transform 0.15s ease;
+}
+
+.ara-btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+.ara-btn-accent1 {
+  background-color: var(--ara-accent-1-soft);
+  border: 1px solid var(--ara-accent-1-border);
+  border-radius: var(--ara-radius);
+  color: var(--ara-accent-1);
+}
+
+.ara-btn-accent2 {
+  background-color: var(--ara-accent-2-soft);
+  border: 1px solid var(--ara-accent-2-border);
+  border-radius: var(--ara-radius);
+  color: var(--ara-accent-2);
+}
+
+.ara-btn-accent3 {
+  background-color: var(--ara-accent-3-soft);
+  border: 1px solid var(--ara-accent-3-border);
+  border-radius: var(--ara-radius);
+  color: var(--ara-accent-3);
+}
+
+/* Range inputs globally tinted by user accent */
+input[type="range"].ara-range {
+  accent-color: var(--ara-accent-1);
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ara-border-subtle);
+  cursor: pointer;
+}
+
+/* Ambient Backdrops (Active when Vortex is OFF or layered behind Vortex) */
+.ara-backdrop-radial-aurora {
+  background-image:
+    radial-gradient(circle at 18% 24%, var(--ara-accent-1-soft), transparent 46%),
+    radial-gradient(circle at 82% 28%, var(--ara-accent-2-soft), transparent 48%),
+    radial-gradient(circle at 50% 82%, var(--ara-accent-3-soft), transparent 52%);
+}
+
+.ara-backdrop-tech-grid {
+  background-image:
+    linear-gradient(to right, var(--ara-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ara-grid-line) 1px, transparent 1px),
+    radial-gradient(circle at 50% 45%, var(--ara-accent-1-soft), transparent 62%);
+  background-size: 42px 42px, 42px 42px, 100% 100%;
+}
+
+.ara-backdrop-dot-matrix {
+  background-image:
+    radial-gradient(var(--ara-grid-line) 1.6px, transparent 1.6px),
+    radial-gradient(circle at 75% 25%, var(--ara-accent-2-soft), transparent 55%);
+  background-size: 24px 24px, 100% 100%;
+}
+
+.ara-backdrop-horizon-mesh {
+  background-image:
+    conic-gradient(from 140deg at 50% 50%, var(--ara-accent-1-soft), transparent 32%, var(--ara-accent-2-soft) 55%, transparent 78%, var(--ara-accent-3-soft));
+}
+
+/* Density adjustments */
+html[data-density="compact"] .ara-panel-body {
+  padding: 0.55rem;
+}
+html[data-density="comfortable"] .ara-panel-body {
+  padding: 0.85rem;
+}
+
+/* Scrollbar tinted by primary accent */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ara-accent-1-border);
+  border-radius: 999px;
+}

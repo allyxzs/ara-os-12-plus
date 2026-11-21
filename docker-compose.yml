@@ -1,0 +1,11 @@
+services:
+  ara-os-12-plus:
+    build: .
+    container_name: ara-os-12-plus
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.example
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    restart: unless-stopped
